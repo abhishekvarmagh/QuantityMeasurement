@@ -1,22 +1,19 @@
 package quantitymeasurement;
 
-import java.util.Objects;
-
 public class Length {
 
-    private LengthUnit.UnitType unit;
+    private Unit unit;
     private double value;
 
-    public Length(LengthUnit.UnitType unit, double value) {
+    public Length(Unit unit, double value) {
         this.unit = unit;
         this.value = value;
     }
 
-
     public boolean compare(Length that) {
-        double firstValue = this.unit.getUnitValue(this.value);
-        double secondValue = that.unit.getUnitValue(that.value);
-        return Objects.equals(firstValue, secondValue);
+        Double firstValue = this.unit.conversionValue * this.value;
+        Double secondValue = that.unit.conversionValue * that.value;
+        return firstValue.equals(secondValue);
     }
 
     @Override
