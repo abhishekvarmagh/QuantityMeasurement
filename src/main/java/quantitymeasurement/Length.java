@@ -10,16 +10,26 @@ public class Length {
         this.value = value;
     }
 
+    public double getValue(Length length) {
+        return length.unit.conversionValue * length.value;
+    }
+
     public boolean compare(Length that) {
-        Double firstValue = this.unit.conversionValue * this.value;
-        Double secondValue = that.unit.conversionValue * that.value;
-        return firstValue.equals(secondValue);
+        if (this.unit.unitType.equals(that.unit.unitType)) {
+            Double firstValue = getValue(this);
+            Double secondValue = getValue(that);
+            return firstValue.equals(secondValue);
+        }
+        return  false;
     }
 
     public double add(Length that) {
-        double firstValue = this.unit.conversionValue * this.value;
-        double secondValue = that.unit.conversionValue * that.value;
-        return firstValue + secondValue;
+        if (this.unit.unitType.equals(that.unit.unitType)) {
+            double firstValue = getValue(this);
+            double secondValue = getValue(that);
+            return firstValue + secondValue;
+        }
+        return 0;
     }
 
     @Override
@@ -30,6 +40,4 @@ public class Length {
         return Double.compare(length.value, value) == 0 &&
                 unit == length.unit;
     }
-
-
 }
