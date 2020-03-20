@@ -1,5 +1,5 @@
 package quantitymeasurement;
 
 public enum UnitType {
-    LENGTH, VOLUME;
+    LENGTH, VOLUME, WEIGHT;
 }
