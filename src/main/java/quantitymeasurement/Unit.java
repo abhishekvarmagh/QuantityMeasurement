@@ -1,7 +1,7 @@
 package quantitymeasurement;
 
 public enum Unit {
-    FEET(12), INCH(1), YARD(36), CM(1/2.5);
+    FEET(12), INCH(1), YARD(36), CM(1 / 2.5);
 
     public final double conversionValue;
 
