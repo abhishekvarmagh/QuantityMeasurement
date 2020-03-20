@@ -259,4 +259,20 @@ public class QuantityMeasurementTest {
         Assert.assertTrue(compareCheck);
     }
 
+    @Test
+    public void givenGallonAndLitre_WhenAdded_ShouldReturnVolumeInLitre() {
+        Length gallon = new Length(Unit.GALLON, 1.0);
+        Length litre = new Length(Unit.LITRE, 3.78);
+        double add = gallon.add(litre);
+        Assert.assertEquals(7.56,add,0.0);
+    }
+
+    @Test
+    public void givenLitreAndMl_WhenAdded_ShouldReturnVolumeInLitre() {
+        Length litre = new Length(Unit.LITRE, 1.0);
+        Length ml = new Length(Unit.ML, 1000.0);
+        double add = litre.add(ml);
+        Assert.assertEquals(2,add,0.0);
+    }
+
 }
