@@ -299,4 +299,19 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(1001,add,0.0);
     }
 
+    @Test
+    public void given1FeetAnd1000Gram_ShouldReturnFalse() {
+        QuantityMeasurement feet = new QuantityMeasurement(Unit.FEET, 1.0);
+        QuantityMeasurement gram = new QuantityMeasurement(Unit.GRAM, 1000.0);
+        boolean compareCheck = feet.compare(gram);
+        Assert.assertFalse(compareCheck);
+    }
+
+    @Test
+    public void given1FeetAnd3Litre_WhenAdded_ShouldReturnZero() {
+        QuantityMeasurement feet = new QuantityMeasurement(Unit.FEET, 1.0);
+        QuantityMeasurement litre = new QuantityMeasurement(Unit.LITRE, 3.78);
+        double add = feet.add(litre);
+        Assert.assertNotEquals(4.78,add,0.0);
+    }
 }
