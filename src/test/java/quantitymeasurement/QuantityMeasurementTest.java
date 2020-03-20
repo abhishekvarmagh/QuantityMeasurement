@@ -314,4 +314,28 @@ public class QuantityMeasurementTest {
         double add = feet.add(litre);
         Assert.assertNotEquals(4.78,add,0.0);
     }
+
+    @Test
+    public void given0CelsiusAnd0Celsius_ShouldReturnTrue() {
+        QuantityMeasurement celsius1 = new QuantityMeasurement(Unit.CELSIUS, 0.0);
+        QuantityMeasurement celsius2 = new QuantityMeasurement(Unit.CELSIUS, 0.0);
+        boolean compareCheck = celsius1.compare(celsius2);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void given0CelsiusAnd1Celsius_ShouldReturnFalse() {
+        QuantityMeasurement celsius1 = new QuantityMeasurement(Unit.CELSIUS, 0.0);
+        QuantityMeasurement celsius2 = new QuantityMeasurement(Unit.CELSIUS, 1.0);
+        boolean compareCheck = celsius1.compare(celsius2);
+        Assert.assertFalse(compareCheck);
+    }
+
+    @Test
+    public void FahrenheitAndCelsius_ShouldReturnTrue() {
+        QuantityMeasurement fahrenheit = new QuantityMeasurement(Unit.FAHRENHEIT, 212.0);
+        QuantityMeasurement celsius = new QuantityMeasurement(Unit.CELSIUS, 100.0);
+        boolean compareCheck = fahrenheit.compare(celsius);
+        Assert.assertTrue(compareCheck);
+    }
 }
